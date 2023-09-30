@@ -15,6 +15,7 @@ const baseFontSize = 16
 const setFontSize = () => {
   const ratio = parseFloat((getScreenWidth() / getWithFromResolutionText(setting.resolution)).toFixed(2))
   const cssRoot = document.querySelector(':root')
+  // @ts-ignore
   cssRoot?.style.setProperty('font-size', `${baseFontSize * ratio}px`)
 }
 

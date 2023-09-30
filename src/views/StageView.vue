@@ -21,9 +21,9 @@ import levelList from '@/scripts'
 const router = useRouter()
 const stage = useStageStore()
 
-const view: Ref<HTMLElement> = ref(null)
-let app: Application = null
-let player: Player = null
+const view: Ref<HTMLElement | null> = ref(null)
+let app: Application
+let player: Player
 
 const ui = reactive({
   time: 0,
@@ -35,13 +35,13 @@ const ui = reactive({
   },
 })
 
-let timeCountIntervalID = null
+let timeCountIntervalID: number
 const timeCounter = () => {
   ui.time += 1
 }
 
 const init = () => {
-  const width = view.value.clientWidth
+  const width = view.value!.clientWidth
   const resolution = width / 1280
 
   app = new Application({
@@ -50,8 +50,8 @@ const init = () => {
     resolution: resolution,
     width: 1280,
     height: 720,
-  })
-  view.value.appendChild(app.view)
+  } as any)
+  view.value?.appendChild(app.view as any)
 
   player = new Player(app, getScreenCenter(1280, 720), stage.difficulty)
 
@@ -70,24 +70,23 @@ const init = () => {
 
     // 총알 움직임 처리
     const children = app.stage.children
-    children
-      .filter(x => x instanceof EnemyBullet)
-      .forEach((bullet: EnemyBullet, idx) => {
-        bullet.move()
+    const bulletList = children.filter(x => x instanceof EnemyBullet) as Array<EnemyBullet>
+    bulletList.forEach((bullet: EnemyBullet, idx: number) => {
+      bullet.move()
 
-        let remove = false
-        if (isOutOfScreen(bullet)) {
-          remove = true
-        }
+      let remove = false
+      if (isOutOfScreen(bullet)) {
+        remove = true
+      }
 
-        if (isSquareCollide(player, bullet)) {
-          remove = player.hit('ENEMY_BULLET')
-        }
+      if (isSquareCollide(player, bullet)) {
+        remove = player.hit('ENEMY_BULLET')
+      }
 
-        if (remove) {
-          bullet.destroy()
-        }
-      })
+      if (remove) {
+        bullet.destroy()
+      }
+    })
 
     // ui 업데이트
     ui.hp = player.state.hp

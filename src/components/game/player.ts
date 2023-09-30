@@ -33,7 +33,8 @@ const handlePlayerActionKeyUpEvent = (evt: KeyboardEvent) => {
 }
 
 export class Player extends Container {
-  private app = null
+  private app: Application
+  private _body: Sprite
 
   state = {
     hpMAX: 0,
@@ -85,10 +86,10 @@ export class Player extends Container {
 
   /**
    * 충돌 처리
-   * @param target {Container} - 충돌 대상
+   * @param target {} - 충돌 대상
    * @return {boolean} - true 피격, false 피격아님
    */
-  hit(target) {
+  hit(target: string) {
     // 피격 처리
     if (target === 'ENEMY_BULLET') {
       if (!this.state.invincible) {

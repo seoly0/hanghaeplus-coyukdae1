@@ -9,13 +9,14 @@ const ENEMY_VELOCITY = 2
 const ENEMY_COLOR = 0xfcb103
 
 export class Trace extends Enemy {
-  private app = null
-  private player = null
-  private timerIntervalID = null
-  private bulletIntervalID = null
+  private app: Application
+  private player: Player
+  private _body: Sprite
+  private timerIntervalID: number
+  private bulletIntervalID: number
 
   private vector: Vector = { x: 0, y: 0 }
-  private bulletList = []
+  private bulletList: Array<EnemyBullet> = []
   private state = {
     hp: 5,
     lifeTime: 10,
@@ -26,7 +27,7 @@ export class Trace extends Enemy {
     super()
 
     this.app = app
-    this.player = app.stage.children.find(x => x instanceof Player)
+    this.player = app.stage.children.find(x => x instanceof Player) as Player
     this.app.stage.addChild(this)
 
     this.position.x = position.x

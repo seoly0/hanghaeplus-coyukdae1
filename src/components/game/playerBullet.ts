@@ -5,6 +5,7 @@ const BULLET_VELOCITY = 18
 
 export class PlayerBullet extends Container {
   private vector: Vector = { x: 0, y: 0 }
+  private _body: Sprite
 
   constructor(scene: Container, point: Vector, vector: Vector) {
     super()

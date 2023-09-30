@@ -32,11 +32,11 @@ export const getScreenCenter = (width: number, height: number) => {
   }
 }
 
-export const isInScreenX = x => {
+export const isInScreenX = (x: number) => {
   return x > 0 && x < 1280
 }
 
-export const isInScreenY = y => {
+export const isInScreenY = (y: number) => {
   return y > 0 && y < 720
 }
 
