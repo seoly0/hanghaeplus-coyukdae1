@@ -18,7 +18,9 @@
           </template>
         </div>
       </template>
-      <template v-else> 기록할 만한 점수는 아니네요. </template>
+      <template v-else>
+        <div class="low-score">기록할 만한 점수는 아니네요.</div>
+      </template>
     </div>
     <div class="gameover-btn__container">
       <SButton :to="{ name: 'title' }">타이틀로</SButton>
@@ -111,5 +113,10 @@ onMounted(() => {
 }
 .gameover-btn__container > *:last-child {
   margin-right: 0;
+}
+.low-score {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem 0;
 }
 </style>
