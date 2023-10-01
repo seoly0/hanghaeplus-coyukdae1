@@ -3,7 +3,7 @@
     <div class="difficulty-text__container">
       <h1 class="difficulty-text">난이도 선택</h1>
     </div>
-    <div class="difficulty-button-group">
+    <div class="difficulty-btn__container">
       <SButton @click="handleOnSelectDifficulty('EASY')">EASY</SButton>
       <SButton @click="handleOnSelectDifficulty('NORMAL')">NORMAL</SButton>
       <SButton @click="handleOnSelectDifficulty('HARD')">HARD</SButton>
@@ -45,16 +45,16 @@ const handleOnSelectDifficulty = (difficulty: DifficultyType) => {
   font-size: 8rem;
   letter-spacing: 1rem;
 }
-.difficulty-button-group {
+.difficulty-btn__container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.difficulty-button-group > * {
+.difficulty-btn__container > * {
   margin-right: 2rem;
 }
-.difficulty-button-group > *:last-child {
+.difficulty-btn__container > *:last-child {
   margin-right: 0;
 }
 .to-title-btn__container {
