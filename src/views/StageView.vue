@@ -17,6 +17,7 @@ import { Player, Enemy, EnemyBullet } from '@/components/game'
 import { getScreenCenter, isOutOfScreen, isSquareCollide } from '@/libs/physics'
 import { useStageStore } from '@/store'
 import levelList from '@/scripts'
+import { getScreenHeight } from '@/libs/screen'
 
 const router = useRouter()
 const stage = useStageStore()
@@ -41,8 +42,10 @@ const timeCounter = () => {
 }
 
 const init = () => {
-  const width = view.value!.clientWidth
-  const resolution = width / 1280
+  // const width = view.value!.clientWidth
+  const height = getScreenHeight()
+  console.log(height)
+  const resolution = height / 720
 
   app = new Application({
     antialiasing: true,
@@ -133,3 +136,40 @@ onUnmounted(() => {
 // window.addEventListener('keydown', handleUIKeyDownEvent, false)
 // window.removeEventListener('keydown', handleUIKeyDownEvent)
 </script>
+
+<style scoped>
+.view {
+  margin: 0 auto;
+  position: relative;
+  /* overflow: hidden; */
+  width: fit-content;
+  height: fit-content;
+}
+
+.view .ui > * {
+  position: absolute;
+  z-index: 1;
+  /*width: 100%;*/
+  /*height: 100%;*/
+}
+
+.view .ui .hp {
+  font-size: 2rem;
+  color: white;
+}
+
+.view .ui .time {
+  left: 0;
+  top: 0;
+  width: 100%;
+  font-size: 2rem;
+  text-align: right;
+  color: white;
+}
+
+.view .ui .debug {
+  bottom: 0;
+  left: 0;
+  color: white;
+}
+</style>

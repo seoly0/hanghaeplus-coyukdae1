@@ -7,7 +7,7 @@ import { SButton } from '@/components/ui'
     <div class="people">
       <h3>Develop</h3>
       <ul>
-        <li>Seoly0 - FullStack Web Developer</li>
+        <li>Seoly0 - Full Stack Web Developer</li>
       </ul>
 
       <h3>Special Thanks</h3>
@@ -27,9 +27,9 @@ import { SButton } from '@/components/ui'
           </ul>
         </li>
         <li>
-          Anasaka Yonmogi - Unemployed
+          Anasaka Yonmogi - Looking for a job
           <ul>
-            <li>Do Nothing</li>
+            <li>Suppling Chicken</li>
           </ul>
         </li>
       </ul>
@@ -44,7 +44,7 @@ import { SButton } from '@/components/ui'
 .people {
   width: fit-content;
   margin: 0 auto;
-  padding: 3rem 0;
+  padding-top: 2rem;
 }
 h3 {
   margin: 0;
