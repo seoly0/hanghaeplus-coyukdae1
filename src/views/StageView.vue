@@ -3,7 +3,7 @@
     <div class="ui">
       <div class="hp">{{ ui.hp }}</div>
       <div class="time">time: {{ ui.time }}</div>
-      <div class="debug">enemy: {{ ui.debug.enemy }}, bullet: {{ ui.debug.bullet }}</div>
+      <!-- <div class="debug">enemy: {{ ui.debug.enemy }}, bullet: {{ ui.debug.bullet }}</div> -->
     </div>
   </div>
 </template>
@@ -15,12 +15,13 @@ import { useRouter } from 'vue-router'
 import { Application } from 'pixi.js'
 import { Player, Enemy, EnemyBullet } from '@/components/game'
 import { getScreenCenter, isOutOfScreen, isSquareCollide } from '@/libs/physics'
-import { useStageStore } from '@/store'
+import { useSettingStore, useStageStore } from '@/store'
 import levelList from '@/scripts'
-import { getScreenHeight } from '@/libs/screen'
+import { getScreenHeight, getScreenWidth } from '@/libs/screen'
 
 const router = useRouter()
 const stage = useStageStore()
+const setting = useSettingStore()
 
 const view: Ref<HTMLElement | null> = ref(null)
 let app: Application
@@ -42,13 +43,18 @@ const timeCounter = () => {
 }
 
 const init = () => {
+  const width = getScreenWidth()
   const height = getScreenHeight()
-  const resolution = height / 720
+
+  const ratio = setting.resolutionRatio[0] / setting.resolutionRatio[1]
+  const screenRatio = parseFloat((width / height).toFixed(2))
+
+  const multiple = ratio > screenRatio ? width / 1280 : height / 720
 
   app = new Application({
     antialiasing: true,
     transparent: false,
-    resolution: resolution,
+    resolution: multiple,
     width: 1280,
     height: 720,
   } as any)
@@ -139,7 +145,7 @@ onUnmounted(() => {
 .view {
   margin: 0 auto;
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
   width: fit-content;
   height: fit-content;
 }
