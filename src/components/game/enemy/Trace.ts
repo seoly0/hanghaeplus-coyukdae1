@@ -8,6 +8,9 @@ import { DifficultyType } from '@/types'
 const ENEMY_VELOCITY = 2
 const ENEMY_COLOR = 0xfcb103
 
+/**
+ * 플레이어 캐릭터를 향해 사격하는 적 유형
+ */
 export class Trace extends Enemy {
   private app: Application
   private player: Player
@@ -33,12 +36,6 @@ export class Trace extends Enemy {
     this.position.x = position.x
     this.position.y = position.y
 
-    // const triangle = new SimplePlane(Texture.WHITE, [
-    //   new Point(-5, 2),
-    //   new Point(5, 0),
-    //   new Point(-5 -2),
-    // ]);
-
     this._body = new Sprite(Texture.WHITE)
     this._body.tint = ENEMY_COLOR
     this._body.anchor.set(0.5, 0.5)
@@ -56,11 +53,13 @@ export class Trace extends Enemy {
       this.state.bulletCoolDown = 900
     }
 
-    // set interval
+    // TODO: Interval -> Pixi.js 의 api를 활용하도록 변경예정
     this.timerIntervalID = setInterval(() => {
       this.state.lifeTime--
       if (this.state.lifeTime <= 0) this.destroy()
     }, 1000)
+    // 사격 방식 정의
+    // 플레이어를 향해 발사
     this.bulletIntervalID = setInterval(() => {
       const vector = getUnitVector(this, this.player)
       const point = { x: this.x, y: this.y }
@@ -100,9 +99,9 @@ export class Trace extends Enemy {
   }
 
   destroy(_options?: IDestroyOptions | boolean) {
-    super.destroy(_options)
-    this.app.ticker.remove(this.tick)
     clearInterval(this.bulletIntervalID)
     clearInterval(this.timerIntervalID)
+    this.app.ticker.remove(this.tick)
+    super.destroy(_options)
   }
 }

@@ -3,6 +3,9 @@ import { Container, Sprite, Texture } from 'pixi.js'
 
 const BULLET_VELOCITY = 2
 
+/**
+ * 적이 발사하는 총알
+ */
 export class EnemyBullet extends Container {
   private vector: Vector = { x: 0, y: 0 }
   private _body: Sprite
@@ -19,7 +22,6 @@ export class EnemyBullet extends Container {
     this.height = 10
 
     this._body = new Sprite(Texture.WHITE)
-    // this._body.tint = 0xFCB103;
     this._body.width = 10
     this._body.height = 10
     this._body.anchor.set(0.5, 0.5)

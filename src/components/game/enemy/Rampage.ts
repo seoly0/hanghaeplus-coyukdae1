@@ -8,6 +8,9 @@ import { DifficultyType } from '@/types'
 const ENEMY_VELOCITY = 1
 const ENEMY_COLOR = 0xfcb103
 
+/**
+ * 빠르게 탄막을 펼치고 사라지는 적 유형
+ */
 export class Rampage extends Enemy {
   private app: Application
   private player: Player
@@ -54,11 +57,13 @@ export class Rampage extends Enemy {
       this.state.bulletWay = 8
     }
 
-    // set interval
+    // TODO: Interval -> Pixi.js 의 api를 활용하도록 변경예정
     this.timerIntervalID = setInterval(() => {
       this.state.lifeTime--
       if (this.state.lifeTime <= 0) this.destroy()
     }, 1000)
+    // 사격 방식 정의
+    // 나선팔 모양
     let i = 0
     this.bulletIntervalID = setInterval(() => {
       const vectorList = getNWayVectors(this.state.bulletWay, i * 30)
@@ -102,9 +107,9 @@ export class Rampage extends Enemy {
   }
 
   destroy(_options?: IDestroyOptions | boolean) {
-    super.destroy(_options)
-    this.app.ticker.remove(this.tick)
     clearInterval(this.bulletIntervalID)
     clearInterval(this.timerIntervalID)
+    this.app.ticker.remove(this.tick)
+    super.destroy(_options)
   }
 }

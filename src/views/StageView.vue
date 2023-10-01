@@ -42,7 +42,6 @@ const timeCounter = () => {
 }
 
 const init = () => {
-  // const width = view.value!.clientWidth
   const height = getScreenHeight()
   const resolution = height / 720
 

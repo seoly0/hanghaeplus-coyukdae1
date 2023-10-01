@@ -8,6 +8,9 @@ import { SButton } from '@/components/ui'
       <h3>Develop</h3>
       <ul>
         <li>Seoly0 - Full Stack Web Developer</li>
+        <ul>
+          <li><a href="https://github.com/seoly0/hanghaeplus-coyukdae1">https://github.com/seoly0/hanghaeplus-coyukdae1</a></li>
+        </ul>
       </ul>
 
       <h3>Special Thanks</h3>
@@ -57,5 +60,9 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+a,
+a:visited {
+  color: unset;
 }
 </style>
