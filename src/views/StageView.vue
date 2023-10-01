@@ -124,6 +124,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  app.destroy()
   player.removeEvent()
   clearInterval(timeCountIntervalID)
 })
