@@ -74,7 +74,7 @@ export class Player extends Container {
       this.state.hp = 3
     }
 
-    this.state.hp = 100000
+    // this.state.hp = 100000
 
     this.setEvent()
     this.app.ticker.add(this.tick)
