@@ -6,7 +6,6 @@
     <div class="title-button-group">
       <SButton :to="{ name: 'difficulty' }">게임시작</SButton>
       <SButton :to="{ name: 'record' }">기록</SButton>
-      <!-- <SButton :to="{ name: 'settings' }">설정</SButton> -->
       <SButton :to="{ name: 'credit' }">만든이</SButton>
     </div>
   </div>

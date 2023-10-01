@@ -32,6 +32,9 @@ const handlePlayerActionKeyUpEvent = (evt: KeyboardEvent) => {
   else if (evt.code === 'Space') KEY_INPUT.shot = false
 }
 
+/**
+ * 플레이어블 캐릭터 클래스
+ */
 export class Player extends Container {
   private app: Application
   private _body: Sprite
@@ -48,7 +51,6 @@ export class Player extends Container {
   constructor(app: Application, position: Vector, difficulty: DifficultyType) {
     super()
 
-    //
     this.app = app
     this.app.stage.addChild(this)
 
@@ -86,8 +88,8 @@ export class Player extends Container {
 
   /**
    * 충돌 처리
-   * @param target {} - 충돌 대상
-   * @return {boolean} - true 피격, false 피격아님
+   * @param target - 충돌 대상
+   * @return - true 피격, false 피격아님
    */
   hit(target: string) {
     // 피격 처리
@@ -133,13 +135,15 @@ export class Player extends Container {
     const x = this.x + vx * PLAYER_VELOCITY
     const y = this.y + vy * PLAYER_VELOCITY
 
+    // 화면 바깥을 나가지 못하도록 처리
     if (isInScreenX(x)) this.x = x
     if (isInScreenY(y)) this.y = y
   }
 
   destroy(_options?: IDestroyOptions | boolean) {
-    super.destroy(_options)
+    this.removeEvent()
     this.app.ticker.remove(this.tick)
+    super.destroy(_options)
   }
 }
 

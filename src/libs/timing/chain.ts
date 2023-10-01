@@ -2,6 +2,9 @@ const chain = (payload: any = null) => {
   return new Chain(payload)
 }
 
+/**
+ * 실행 밎 대기
+ */
 class Chain {
   private queue: Array<() => Promise<void>> = []
   private done: Array<() => Promise<void>> = []

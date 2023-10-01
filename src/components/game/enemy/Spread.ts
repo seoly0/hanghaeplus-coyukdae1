@@ -8,6 +8,9 @@ import { DifficultyType } from '@/types'
 const ENEMY_VELOCITY = 1
 const ENEMY_COLOR = 0xfcb103
 
+/**
+ * 여러 방향으로 사격하는 적 유형
+ */
 export class Spread extends Enemy {
   private app: Application
   private player: Player
@@ -54,7 +57,6 @@ export class Spread extends Enemy {
       this.state.bulletWay = 10
     }
 
-    // set interval
     this.timerIntervalID = setInterval(() => {
       this.state.lifeTime--
       if (this.state.lifeTime <= 0) this.destroy()
@@ -100,9 +102,9 @@ export class Spread extends Enemy {
   }
 
   destroy(_options?: IDestroyOptions | boolean) {
-    super.destroy(_options)
     this.app.ticker.remove(this.tick)
     clearInterval(this.bulletIntervalID)
     clearInterval(this.timerIntervalID)
+    super.destroy(_options)
   }
 }
