@@ -18,7 +18,6 @@ import { SButton } from '@/components/ui'
 import { chain } from '@/libs/timing/chain'
 
 const titleAssemble = ['ㅊ', '초', '총', '총ㅇ', '총아', '총알', '총알ㅍ', '총알피', '총알피ㅎ', '총알피하', '총알피하ㄱ', '총알피하기']
-
 const titleText = ref('')
 
 onMounted(() => {
@@ -42,7 +41,8 @@ onMounted(() => {
 }
 .title-text__container .title-text {
   margin: 0;
-  padding: 5rem 0;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
   font-size: 8rem;
   letter-spacing: 1rem;
 }
@@ -53,6 +53,6 @@ onMounted(() => {
   align-items: center;
 }
 .title-button-group > * {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
 }
 </style>

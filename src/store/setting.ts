@@ -8,8 +8,8 @@ interface SettingState {
 }
 
 const state: SettingState = {
-  resolution: '1280x720',
-  resolutionRatio: '16:9',
+  resolution: [1280, 720],
+  resolutionRatio: [16, 9],
   language: 'KOREAN',
 }
 
