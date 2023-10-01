@@ -6,3 +6,9 @@ export interface Stage {
   enemyMoveSpeed: number
   enemyBulletSpeed: number
 }
+
+export interface GameRecord {
+  player: string
+  time: number
+  recordAt: string
+}

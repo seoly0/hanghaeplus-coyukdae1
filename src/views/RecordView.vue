@@ -50,12 +50,7 @@
 import { ref, Ref, computed } from 'vue'
 import { SButton } from '@/components/ui'
 import { DifficultyType } from '@/types'
-
-interface GameRecord {
-  player: string
-  time: number
-  recordAt: string
-}
+import { GameRecord } from '@/types/stage'
 
 const difficulty: Ref<DifficultyType> = ref('NORMAL')
 
