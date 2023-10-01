@@ -60,7 +60,8 @@ const recordScore = () => {
 }
 
 onMounted(() => {
-  highScore.value = record[record.length - 1].time < stage.score
+  if (record.length) highScore.value = record[record.length - 1].time < stage.score
+  else highScore.value = true
 })
 </script>
 
