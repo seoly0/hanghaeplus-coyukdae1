@@ -44,7 +44,6 @@ const timeCounter = () => {
 const init = () => {
   // const width = view.value!.clientWidth
   const height = getScreenHeight()
-  console.log(height)
   const resolution = height / 720
 
   app = new Application({
@@ -102,11 +101,9 @@ const init = () => {
 
 const start = async () => {
   for (let i = 0; i < levelList.length; i++) {
-    console.log(`${i + 1} 스테이지`)
     // TODO 레벨 UI 출력
     await levelList[i](app, stage.difficulty)
   }
-  console.log('무한스테이지 진입')
 }
 
 const restart = () => {}
@@ -117,7 +114,8 @@ const stop = () => {
 
 const end = () => {
   stop()
-  router.replace('/over')
+  stage.score = ui.time
+  router.push({ name: 'over' })
 }
 
 onMounted(() => {
@@ -149,8 +147,6 @@ onUnmounted(() => {
 .view .ui > * {
   position: absolute;
   z-index: 1;
-  /*width: 100%;*/
-  /*height: 100%;*/
 }
 
 .view .ui .hp {
