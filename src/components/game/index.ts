@@ -1,4 +1,4 @@
-import { Player } from './player'
+import { Player } from './player/Player.ts'
 import { Enemy } from './enemy/Enemy.ts'
 import { Trace } from './enemy/Trace.ts'
 import { Spread } from './enemy/Spread.ts'
