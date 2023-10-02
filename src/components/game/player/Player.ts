@@ -6,7 +6,7 @@ import { Vector } from '@/libs/physics/vector.ts'
 import { DifficultyType } from '@/types'
 
 const PLAYER_VELOCITY = 3
-const PLAYER_NORMAL_COLOR = 0x00ff00
+const PLAYER_NORMAL_COLOR = 0x10b981
 const PLAYER_HIT_COLOR = 0xff0000
 
 const KEY_INPUT = {
