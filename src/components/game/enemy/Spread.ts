@@ -4,9 +4,9 @@ import { EnemyBullet, Player } from '@/components/game'
 import { Vector, getNWayVectors } from '@/libs/physics/vector.ts'
 import { isInScreenX, isInScreenY } from '@/libs/physics'
 import { DifficultyType } from '@/types'
+import SpriteURI from '@/assets/sprite/spread.png'
 
 const ENEMY_VELOCITY = 1
-const ENEMY_COLOR = 0xfcb103
 
 /**
  * 여러 방향으로 사격하는 적 유형
@@ -37,8 +37,7 @@ export class Spread extends Enemy {
     this.position.x = position.x
     this.position.y = position.y
 
-    this._body = new Sprite(Texture.WHITE)
-    this._body.tint = ENEMY_COLOR
+    this._body = Sprite.from(SpriteURI)
     this._body.anchor.set(0.5, 0.5)
     this._body.position.x = 0
     this._body.position.y = 0

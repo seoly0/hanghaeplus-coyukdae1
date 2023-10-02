@@ -15,9 +15,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import VueLOGOURI from '@/assets/vue-logo.svg'
-import ViteLogoURI from '@/assets/vite-logo.svg'
-import PixiLogoURI from '@/assets/pixi-logo.svg'
+import VueLOGOURI from '@/assets/logo/vue-logo.svg'
+import ViteLogoURI from '@/assets/logo/vite-logo.svg'
+import PixiLogoURI from '@/assets/logo/pixi-logo.svg'
 import { chain } from '@/libs/timing/chain'
 
 const router = useRouter()

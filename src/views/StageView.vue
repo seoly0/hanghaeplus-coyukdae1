@@ -105,8 +105,8 @@ const init = () => {
     ui.hp = player.state.hp
 
     // 디버깅용 ui 업데이트
-    ui.debug.enemy = children.filter(x => x instanceof Enemy).length
-    ui.debug.bullet = children.filter(x => x instanceof EnemyBullet).length
+    // ui.debug.enemy = children.filter(x => x instanceof Enemy).length
+    // ui.debug.bullet = children.filter(x => x instanceof EnemyBullet).length
   })
 }
 
