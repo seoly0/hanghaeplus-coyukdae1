@@ -17,7 +17,7 @@ import type { Ref } from 'vue'
 import { ref, onMounted, onUnmounted, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { Application } from 'pixi.js'
-import { Player, Enemy, EnemyBullet } from '@/components/game'
+import { Player, EnemyBullet } from '@/components/game'
 import { getScreenCenter, isOutOfScreen, isSquareCollide } from '@/libs/physics'
 import { useSettingStore, useStageStore } from '@/store'
 import levelList from '@/scripts'
@@ -37,10 +37,10 @@ const ui = reactive({
   hp: 0,
   stage: 1,
 
-  debug: {
-    enemy: 0,
-    bullet: 0,
-  },
+  // debug: {
+  //   enemy: 0,
+  //   bullet: 0,
+  // },
 })
 
 let timeCountIntervalID: number
