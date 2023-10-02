@@ -3,6 +3,10 @@
     <div class="ui">
       <div class="hp">{{ ui.hp }}</div>
       <div class="time">time: {{ ui.time }}</div>
+      <div class="stage-text" :class="{ show: stageShow }">
+        <template v-if="ui.stage <= 3"> STAGE {{ ui.stage }}</template>
+        <template v-else>최대한 오래 살아남아보세요.</template>
+      </div>
       <!-- <div class="debug">enemy: {{ ui.debug.enemy }}, bullet: {{ ui.debug.bullet }}</div> -->
     </div>
   </div>
@@ -24,12 +28,14 @@ const stage = useStageStore()
 const setting = useSettingStore()
 
 const view: Ref<HTMLElement | null> = ref(null)
+const stageShow = ref(false)
 let app: Application
 let player: Player
 
 const ui = reactive({
   time: 0,
   hp: 0,
+  stage: 1,
 
   debug: {
     enemy: 0,
@@ -107,7 +113,12 @@ const init = () => {
 const start = async () => {
   for (let i = 0; i < levelList.length; i++) {
     // TODO 레벨 UI 출력
+    stageShow.value = true
+    setTimeout(() => {
+      stageShow.value = false
+    }, 1000)
     await levelList[i](app, stage.difficulty)
+    ui.stage++
   }
 }
 
@@ -167,6 +178,24 @@ onUnmounted(() => {
   font-size: 2rem;
   text-align: right;
   color: white;
+}
+
+.view .ui .stage-text {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  opacity: 0;
+  transition: 0.4s opacity;
+}
+
+.view .ui .stage-text.show {
+  opacity: 1;
 }
 
 .view .ui .debug {
