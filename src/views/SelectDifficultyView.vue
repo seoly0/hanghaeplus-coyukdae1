@@ -26,7 +26,7 @@ const router = useRouter()
 const handleOnSelectDifficulty = (difficulty: DifficultyType) => {
   store.difficulty = difficulty
 
-  router.replace({ name: 'stage' })
+  router.replace({ name: 'guide' })
 }
 </script>
 
