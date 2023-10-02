@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import BackgroundImgURI from '@/assets/btn-bg.svg'
+import BackgroundImgURI from '@/assets/ui/btn-bg.svg'
 import { useRouter, RouteLocationRaw } from 'vue-router'
 
 interface Props {
