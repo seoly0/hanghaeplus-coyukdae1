@@ -50,7 +50,7 @@
 import { SButton } from '@/components/ui'
 import TraceSpriteURI from '@/assets/guide/trace.png'
 import SpreadGuideURI from '@/assets/guide/spread.png'
-import RampagepriteURI from '@/assets/guide/Rampage.png'
+import RampagepriteURI from '@/assets/guide/rampage.png'
 </script>
 
 <style scoped>
